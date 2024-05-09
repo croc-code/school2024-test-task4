@@ -8,12 +8,11 @@ import org.letunov.domain.EmployeeCommit;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 
+/**
+ * Главный класс программы. Главный поток выполнения операций.
+ */
 public class App {
   public static void main(String[] args) {
     ScoreManager scoreManager = new ScoreManager();

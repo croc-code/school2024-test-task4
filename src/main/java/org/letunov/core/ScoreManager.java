@@ -2,36 +2,37 @@ package org.letunov.core;
 
 import org.letunov.domain.EmployeeCommit;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+/**
+ * Класс для формирования топа сотрудников
+ */
 public class ScoreManager {
     private final Map<String, Integer> employees = new HashMap<>();
+
+    /**
+     * Конструктор по-умолчанию
+     */
+    public ScoreManager() {}
+
+    /**
+     * Позволяет положить очередной коммит сотрудника, учавствующего в соревновании.
+     * @param employeeCommit очередной коммит сотрудника
+     */
     public void pushEmployeeCommit(EmployeeCommit employeeCommit) {
         employees.merge(employeeCommit.getName(),1, Integer::sum);
     }
+
+    /**
+     * Возвращает список наиболее активных сотрудников по числу коммитов,
+     * начиная с наибольшего числа.
+     * @param topNumber размер топа, который необходимо сформировать
+     * @return список наиболее активных сотрудников
+     */
     public List<String> getTop(int topNumber) {
         return employees.entrySet().stream().sorted((x,y) -> y.getValue() - x.getValue())
                 .limit(topNumber).map(Map.Entry::getKey).toList();
-//        List<String> result = new ArrayList<>();
-//        List<Map.Entry<String, Integer>> entries = employees.entrySet().stream().sorted((x, y) -> y.getValue() - x.getValue())
-//                .toList();
-//        int place = 1;
-//        int prev = -1;
-//        for (Map.Entry<String, Integer> entry : entries) {
-//            if (prev != entry.getValue() && place == topNumber + 1)
-//                break;
-//            else if (prev != entry.getValue()) {
-//                place++;
-//                prev = entry.getValue();
-//                result.add(entry.getKey());
-//            } else {
-//                result.add(entry.getKey());
-//            }
-//        }
-//        return result;
     }
 }

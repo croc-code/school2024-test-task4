@@ -32,7 +32,7 @@ namespace TopContributors
             string[] topContributors = rating.GetOrderedContributionRating(contributions);
 
             StreamWriter output = new StreamWriter(outputPath);
-            output.Write(string.Join(" ", topContributors));
+            output.Write(string.Join("\n", topContributors));
             output.Close();
         }
 

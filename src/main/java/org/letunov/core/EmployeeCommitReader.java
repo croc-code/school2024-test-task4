@@ -33,6 +33,11 @@ public class EmployeeCommitReader implements AutoCloseable {
         String[] parts = string.split("\\s");
         return new EmployeeCommit(parts[0], parts[1], parts[2]);
     }
+
+    /**
+     * Закрывает поток чтения
+     * @throws Exception если не удается корректно закрыть поток чтения
+     */
     @Override
     public void close() throws Exception {
         bufferedReader.close();

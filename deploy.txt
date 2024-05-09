@@ -1,7 +1,0 @@
-javac -d target/classes -cp src/main/java/ src/main/java/org/letunov/App.java
-java -cp target/classes org.letunov.App
-
-mvn clean package
-java -jar target/school2024-test-task4-1.0-SNAPSHOT.jar
-
-javadoc -d target/docs -cp src/main/java/ -subpackages org.letunov

@@ -5,14 +5,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class EmployeeCommit {
-    private final static DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+    public final static DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
     private final String name;
     private final String reducedHash;
     private final LocalDateTime localDateTime;
     public EmployeeCommit(String name, String reducedHash, String localDateTime) {
         this.name = name;
         this.reducedHash = reducedHash;
-        this.localDateTime = LocalDateTime.parse(localDateTime, formatter);
+        this.localDateTime = LocalDateTime.parse(localDateTime, FORMATTER);
+    }
+    public EmployeeCommit(EmployeeCommit employeeCommit) {
+        this.name = employeeCommit.name;
+        this.reducedHash = employeeCommit.reducedHash;
+        this.localDateTime = employeeCommit.localDateTime;
     }
     public String getName() {
         return name;
@@ -39,5 +44,9 @@ public class EmployeeCommit {
     @Override
     public int hashCode() {
         return 31 * name.hashCode() + reducedHash.hashCode() + localDateTime.hashCode();
+    }
+    @Override
+    public String toString() {
+        return name + " " + reducedHash + " " + FORMATTER.format(localDateTime);
     }
 }

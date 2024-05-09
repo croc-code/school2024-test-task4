@@ -13,7 +13,7 @@ public class EmployeeCommitReader implements AutoCloseable {
     }
     public EmployeeCommit nextEmployeeCommit() throws IOException {
         String string = bufferedReader.readLine();
-        if (string == null)
+        if (string == null || string.trim().isEmpty())
             return null;
         String[] parts = string.split("\\s");
         return new EmployeeCommit(parts[0], parts[1], parts[2]);

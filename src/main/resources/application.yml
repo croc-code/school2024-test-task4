@@ -1,0 +1,6 @@
+app:
+  count-top-contributors: 3
+
+spring:
+  application:
+    name: school2024-test-task4

@@ -10,14 +10,21 @@ namespace TopContributors
             const string outputFile = "result.txt";
             const int numberOfPlaces = 3;
 
-            string projectPath = GetProjectPath();
+            string projectPath = Directory.GetCurrentDirectory();
             string inputPath = Path.Combine(projectPath, inputFile);
-            string outputPath = Path.Combine(projectPath, outputFile);
 
+            if (!File.Exists(inputPath))
+            {
+                projectPath = DebugProjectPath();
+                inputPath = Path.Combine(projectPath, inputFile);
+            }
             if (!File.Exists(inputPath))
             {
                 throw new FileNotFoundException($"Missing {inputFile} in src directory!");
             }
+
+            string outputPath = Path.Combine(projectPath, outputFile);
+
 
             string[] contributions = File.ReadAllLines(inputPath);
 
@@ -29,7 +36,7 @@ namespace TopContributors
             output.Close();
         }
 
-        static string GetProjectPath()
+        static string DebugProjectPath()
         {
             string processPath = Directory.GetCurrentDirectory();
             string projectPath = Directory.GetParent(processPath).Parent.Parent.FullName;

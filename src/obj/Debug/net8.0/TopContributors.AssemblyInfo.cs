@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TopContributors")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3931a2ecdad3e3a1e8f6e06c531a8e3dfb431ecf")]
 [assembly: System.Reflection.AssemblyProductAttribute("TopContributors")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TopContributors")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

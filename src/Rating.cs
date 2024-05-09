@@ -12,9 +12,9 @@ namespace TopContributors
             NumberOfPlaces = numberOfPlaces;
         }
 
-        public Dictionary<string, int> GetOrderedContributionRating(string[] contributions)
+        public string[] GetOrderedContributionRating(string[] contributions)
         {
-            Dictionary<string, int> bestContributors = contributions
+            string[] bestContributors = contributions
                 // only unique entries
                 .Distinct()
                 .Where(IsValidEntry)
@@ -23,7 +23,8 @@ namespace TopContributors
                 .GroupBy(name => name)
                 .OrderByDescending(g => g.Count())
                 .Take(NumberOfPlaces)
-                .ToDictionary(g => g.Key, g => g.Count());
+                .Select(g => g.Key)
+                .ToArray();
 
              return bestContributors;
         }

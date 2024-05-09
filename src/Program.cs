@@ -22,10 +22,10 @@ namespace TopContributors
             string[] contributions = File.ReadAllLines(inputPath);
 
             Rating rating = new Rating(numberOfPlaces); 
-            Dictionary<string, int> topContributors = rating.GetOrderedContributionRating(contributions);
+            string[] topContributors = rating.GetOrderedContributionRating(contributions);
 
             StreamWriter output = new StreamWriter(outputPath);
-            output.Write(string.Join(" ", topContributors.Keys));
+            output.Write(string.Join(" ", topContributors));
             output.Close();
         }
 

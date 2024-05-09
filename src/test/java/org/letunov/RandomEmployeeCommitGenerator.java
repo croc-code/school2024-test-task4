@@ -3,9 +3,7 @@ package org.letunov;
 import org.letunov.domain.EmployeeCommit;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RandomEmployeeCommitGenerator {
     private final Random random = new Random();

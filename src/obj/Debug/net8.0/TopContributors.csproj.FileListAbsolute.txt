@@ -1,0 +1,15 @@
+D:\study\croc\school2024-test-task4\src\bin\Debug\net8.0\TopContributors.exe
+D:\study\croc\school2024-test-task4\src\bin\Debug\net8.0\TopContributors.deps.json
+D:\study\croc\school2024-test-task4\src\bin\Debug\net8.0\TopContributors.runtimeconfig.json
+D:\study\croc\school2024-test-task4\src\bin\Debug\net8.0\TopContributors.dll
+D:\study\croc\school2024-test-task4\src\bin\Debug\net8.0\TopContributors.pdb
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.GeneratedMSBuildEditorConfig.editorconfig
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.AssemblyInfoInputs.cache
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.AssemblyInfo.cs
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.csproj.CoreCompileInputs.cache
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.sourcelink.json
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.dll
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\refint\TopContributors.dll
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.pdb
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\TopContributors.genruntimeconfig.cache
+D:\study\croc\school2024-test-task4\src\obj\Debug\net8.0\ref\TopContributors.dll

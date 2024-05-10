@@ -15,9 +15,11 @@ builder.Logging.AddConsole();
 
 using IHost host = builder.Build();
 
+// Get best emplyees
 var be = new BestEmployees(host.Services.GetRequiredService<CommitsParseService>());
 
 be.Write(be.Get());
+
 
 public class BestEmployees(CommitsParseService parseService)
 {
@@ -30,6 +32,9 @@ public class BestEmployees(CommitsParseService parseService)
         return topEmployees;
     }
 
+    /// <summary>
+    /// Write top employees to file
+    /// </summary>
     public void Write(IEnumerable<KeyValuePair<string, int>>? topEmployees)
     {
         FileSaver.WriteToFile(topEmployees);

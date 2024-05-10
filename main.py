@@ -30,16 +30,15 @@ def check_date(commit_date):
 
 '''
 Проверяет данные в считанной строке на соответствие требованиям
-Принимает строку, возвращает имя пользователя или False
+Принимает строку, возвращает кортеж (имя пользователя, хэш коммита) или False
 '''
 def check_line(line):
     if len(line.split()) != 3:
         return False
     user_name, commit_hash, commit_date = line.split()
     if check_name(user_name) and check_hash(commit_hash) and check_date(commit_date):
-        return user_name
-    else:
-        return False
+        return (user_name, commit_hash)
+    return False
 
 '''
 Считывает файл с данными о коммитах
@@ -51,23 +50,13 @@ def read_commits():
     dev_names = {}
     with open('commits.txt', 'r') as f:
         for line in f:
-            user_name = check_line(line)
-            if user_name:
-                if user_name not in dev_names:
-                    dev_names[user_name] = 0
-                dev_names[user_name] += 1
+            user_name_hash = check_line(line)
+            if user_name_hash: 
+                if user_name_hash[0] not in dev_names:
+                    dev_names[user_name_hash[0]] = set()
+                dev_names[user_name_hash[0]].add(user_name_hash[1])
             else:
-                  print(f'Invalid data: {line}')  
-            # if len(line.split()) == 3:
-            #     user_name, commit_hash, commit_date = line.split()
-            #     if check_name(user_name) and check_hash(commit_hash) and check_date(commit_date):
-                    # if user_name not in dev_names:
-                    #     dev_names[user_name] = 0
-                    # dev_names[user_name] += 1
-            #     else:
-            #         print(f'Invalid data: {line}')
-            # else:
-            #     print(f'Invalid data: {line}')
+                  print(f'Invalid data: {line}')
     return dev_names
 
 '''
@@ -86,10 +75,12 @@ def find_top(commits_dict):
 def write_winners(winners):
     with open('result.txt', 'w') as f:
         f.write(str('\n'.join(winners)))
+        if len(winners) == 0:
+            f.write("NO WINNERS")
 
 def main():
     commits_dict = read_commits()
-    winners = find_top(commits_dict)
+    winners = find_top({key:len(value) for (key,value) in commits_dict.items()})
     write_winners(winners)
 
 if __name__ == '__main__':

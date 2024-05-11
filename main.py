@@ -12,10 +12,10 @@ class Constants:
     result_file = 'result.txt'  # имя файла куда записываем результат
     cnt_winner = 3  # кол-во победителей
     current_date = datetime.now()  # текущее время
-    time_pattern = '%Y-%m-%dT%H:%M:%S.'  # паттерн для datetime
+    time_pattern = '%Y-%m-%dT%H:%M:%S'  # паттерн для datetime
     cnt_competition_days = 28  # продолжительность игры в днях
     regular_expression = re.compile(
-        r'\b[a-zA-z_]\w*\b \b[a-z0-9]{7}\b \b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.')  # регулярное выражение
+        r'\b[a-zA-z_]\w*\b \b[a-z0-9]{7}\b \b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}')  # регулярное выражение
 
 
 logging.basicConfig(filename='log.txt', filemode='w')  # логер для логирования ошибок

@@ -1,4 +1,5 @@
 import heapq
+from validators import validate_commit
 
 
 def read_commits(input_file: str) -> dict:
@@ -10,16 +11,14 @@ def read_commits(input_file: str) -> dict:
     with open(input_file, 'r') as file:
         for line in file:
             line = line.strip()
-            if line:
+            if validate_commit(line):
                 contributor = line.split()[0]
                 commits[contributor] = commits.get(contributor, 0) + 1
     return commits
 
 
 def write_winners(winners: list, output_file: str) -> None:
-    """
-    A function to write the winners to a file.
-    """
+    """ A function to write the winners to a file. """
     with open(output_file, 'w') as file:
         for winner in winners:
             file.write(winner + '\n')

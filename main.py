@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import List
 import re
 import logging
+from os import path
 
 
 @dataclass(frozen=True)
@@ -76,6 +77,9 @@ def winner_search(user_dict: dict[str, set]) -> List[str]:  # ищем 3 поб�
 
 
 def main() -> None:
+    if not path.exists(Constants.target_file):
+        logging.critical(f'{Constants.target_file} file does not exist!')
+        return
     count_users_commits = defaultdict(set)
     file_read(count_users_commits, Constants.target_file)
     winners = winner_search(count_users_commits)

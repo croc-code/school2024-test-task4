@@ -9,15 +9,12 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
 import lombok.experimental.UtilityClass;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.example.task.configuration.ApplicationConfig;
 import org.example.task.validation.Validator;
 
 @UtilityClass
 public class Reader {
 
-    private static final Logger LOGGER = LogManager.getLogger();
     private static final ApplicationConfig APPLICATION_CONFIG = new ApplicationConfig();
 
     /**
@@ -44,10 +41,10 @@ public class Reader {
                     }
                 }
             } catch (IOException e) {
-                LOGGER.error("Error reading from file: {}", e.getMessage());
+                System.err.print("Error reading from file: " + e.getMessage());
             }
         } else {
-            LOGGER.error("File not found: {}", file);
+            System.err.println("File not found: " + file);
         }
 
         return contributors;
@@ -63,19 +60,19 @@ public class Reader {
     @SuppressWarnings("ReturnCount")
     private boolean isStringValid(String[] strings) {
         if (!Validator.isLineValid(strings)) {
-            LOGGER.error("Invalid string format: {}", Arrays.toString(strings));
+            System.err.println("Invalid string format: " + Arrays.toString(strings));
             return false;
         }
         if (!Validator.isUsernameValid(strings[APPLICATION_CONFIG.getUsernameIdx()])) {
-            LOGGER.error("Invalid username: {}", strings[APPLICATION_CONFIG.getUsernameIdx()]);
+            System.err.println("Invalid username: " + strings[APPLICATION_CONFIG.getUsernameIdx()]);
             return false;
         }
         if (!Validator.isHashValid(strings[APPLICATION_CONFIG.getHashIdx()])) {
-            LOGGER.error("Invalid hash: {}", strings[APPLICATION_CONFIG.getHashIdx()]);
+            System.err.println("Invalid hash: " + strings[APPLICATION_CONFIG.getHashIdx()]);
             return false;
         }
         if (!Validator.isDateValid(strings[APPLICATION_CONFIG.getDateIdx()])) {
-            LOGGER.error("Invalid date: {}", strings[APPLICATION_CONFIG.getDateIdx()]);
+            System.err.println("Invalid date: " + strings[APPLICATION_CONFIG.getDateIdx()]);
             return false;
         }
 

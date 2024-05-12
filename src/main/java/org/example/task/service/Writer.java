@@ -9,15 +9,12 @@ import java.util.Map;
 import java.util.Set;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.example.task.configuration.ApplicationConfig;
 
 
 @UtilityClass
 public class Writer {
 
-    private static final Logger LOGGER = LogManager.getLogger();
     private static final ApplicationConfig APPLICATION_CONFIG = new ApplicationConfig();
 
     /**
@@ -55,9 +52,7 @@ public class Writer {
             strContr.deleteCharAt(strContr.length() - 1);
             writer.write(strContr.toString());
         } catch (IOException e) {
-            LOGGER.error("Error writing to file: {}", e.getMessage());
+            System.err.println("Error writing to file: " + e.getMessage());
         }
-
-        LOGGER.info("File written successfully.");
     }
 }

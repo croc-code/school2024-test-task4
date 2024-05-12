@@ -1,3 +1,9 @@
+#pragma once
+
+//функция вывода имён трёх лучших конрибьютеров в конечный файл result
+
+#include "LagestElement.h"
+#include <fstream>
 #include <iostream>
 #include <vector>
 #include <unordered_map>

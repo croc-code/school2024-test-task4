@@ -16,6 +16,7 @@ public class ContributionRanker {
 
         if (results.size() < numberOfAwardees) {
             System.out.println("Количество участников меньше заданного количества призеров");
+            System.exit(0);
         }
 
         return rankContributors(results);

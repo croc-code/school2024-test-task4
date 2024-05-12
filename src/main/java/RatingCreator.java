@@ -6,7 +6,8 @@ import uploader.ResultUploader;
 import java.util.List;
 
 public class RatingCreator {
-    private static final int NUMBER_OF_AWARDEES = 3; // Количество призовых мест
+    // Количество призовых мест
+    private static final int NUMBER_OF_AWARDEES = 3;
 
     private RatingCreator() {}
 

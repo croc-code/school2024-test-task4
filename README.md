@@ -63,6 +63,10 @@ CodeKiller777
 ```bash
    cd C:\Users\ilnur\school2024-test-task4\school2024-test-task4-task
 ```
+   а затем
+   ```bash
+   mvn clean package
+```
 2. **Запуск**
 
    Запустите приложение

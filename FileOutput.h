@@ -29,7 +29,7 @@ int resultOutput(std::vector<int> *CommitsCount, std::unordered_map<std::string,
             if (iter == 3) break; //условия для 3-х человек
         }
         MAX--;
-        if (iter == 3) break; //и здесть так же
+        if (iter == 3) break; //и здесь так же
     }
 
     out.close(); //закончили

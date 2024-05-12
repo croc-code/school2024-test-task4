@@ -24,6 +24,7 @@ CodeKiller777
 
 ## Автор решения
 Ларин Анатолий Николаевич
+
 [Я в Telegram](https://t.me/centner_cents)
 
 ## Описание реализации

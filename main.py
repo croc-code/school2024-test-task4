@@ -31,9 +31,11 @@ def find_winners(commits: dict, winners_count: int) -> list:
     """
     winners_heap = []
     for contributor, commits_count in commits.items():
+        # Collect the necessary number of winners.
         if len(winners_heap) < winners_count:
             heapq.heappush(winners_heap, (commits_count, contributor))
         else:
+            # Replace the contributor with the least commits count if the current contributor has more commits.
             if commits_count > winners_heap[0][0]:
                 heapq.heappop(winners_heap)
                 heapq.heappush(winners_heap, (commits_count, contributor))

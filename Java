@@ -1,0 +1,45 @@
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+import java.util.regex.*;
+import java.util.stream.*;
+
+public class CommitAnalyzer {
+
+    public static void main(String[] args) {
+        String inputFilePath = "commits.txt";
+        String outputFilePath = "result.txt";
+
+        // Чтение и обработка данных из файла
+        Map<String, Integer> userCommits = new HashMap<>();
+        Pattern pattern = Pattern.compile("(\\w+)\\s([a-f0-9]{7})\\s(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})");
+
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(inputFilePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Matcher matcher = pattern.matcher(line);
+                if (matcher.matches()) {
+                    String user = matcher.group(1);
+                    userCommits.put(user, userCommits.getOrDefault(user, 0) + 1);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Сортировка пользователей по количеству коммитов и выбор топ-3
+        List<Map.Entry<String, Integer>> sortedUsers = userCommits.entrySet().stream()
+            .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+            .limit(3)
+            .collect(Collectors.toList());
+
+        // Запись результатов в файл
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFilePath))) {
+            for (Map.Entry<String, Integer> entry : sortedUsers) {
+                writer.write(entry.getKey() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
